@@ -5,14 +5,8 @@ from .models import Products
 # Create your views here.
 def product_home(request):
 
-    # return HttpResponse(f'<center><h1>Welcome to Products Home</h1><hr></center>')
-    objs = Products.objects.all()
-    context = dict()
-
-    for i, obj in enumerate(objs):
-        context['pro'+str(i)] = obj.name
-    
-    return render(request, 'templates/all_products.html', context=context)
+    # return HttpResponse(f'<center><h1>Welcome to Products Home</h1><hr></center>')    
+    return render(request, 'product_templates/all_products.html', context = None)
 
 def product_specific(request, pk = 0):
     try:
@@ -26,7 +20,7 @@ def product_specific(request, pk = 0):
             'price': objs[pk].price,
         }
 
-        return render(request, 'templates/product_detail.html', context = context)
+        return render(request, 'product_templates/product_detail.html', context = context)
         
     except Exception as e:
         print(e)
