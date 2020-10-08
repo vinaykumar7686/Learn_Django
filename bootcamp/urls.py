@@ -21,6 +21,6 @@ from profiles.views import profiles_home
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('products/', product_home),
-    path('products/<int:id>/',product_specific),
+    path('products/<int:pk>/',product_specific),
     path('profiles/', profiles_home),
 ]
