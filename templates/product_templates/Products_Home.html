@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+</head>
+<body style="text-align: center;">
+    <h1>Welcome to Products Page!</h1>
+    <hr>
+
+    <h3>Total number of Products registered are {{t_count}}</h3>
+
+    <div style="text-align: left;">
+        <h3>List of Products is as follows:</h3>
+        <ul>
+            <!---For External File
+            {% include 'product_templates/list_of_products.html' with objects=objects %}
+            -->
+
+            {% block list_of_products %}
+                {% for object in objects %}
+                <li>
+                    <h3>{{object.name}}</h3>
+                    <h5>{{object.content}}</h5>
+                    <h5>{{object.price}}</h5>
+                </li>
+                {% endfor %}
+            {% endblock list_of_products %}
+
+        </ul>
+    </div>
+</body>
+</html>

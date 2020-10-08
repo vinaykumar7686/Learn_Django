@@ -6,7 +6,8 @@ from .models import Products
 def product_home(request):
 
     # return HttpResponse(f'<center><h1>Welcome to Products Home</h1><hr></center>')    
-    return render(request, 'product_templates/all_products.html', context = None)
+    obj = Products.objects.all()
+    return render(request, 'product_templates/Products_Home.html', context = {'t_count':len(obj),'objects': obj})
 
 def product_specific(request, pk = 0):
     try:
