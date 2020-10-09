@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Search Results are as follows</h1>
+{% endblock content %}
+{% block content2 %}
+
+<ul>
+
+    {% for obj in res %}
+        <li>{{obj.name}}
+            {{obj.content}}
+            {{obj.price}}
+        </li>
+
+    {% endfor %}
+
+</ul>
+{% endblock content2 %}
