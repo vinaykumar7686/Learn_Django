@@ -9,16 +9,16 @@ def product_home(request):
     obj = Products.objects.all()
     return render(request, 'product_templates/Products_Home.html', context = {'t_count':len(obj),'objects': obj})
 
-def product_specific(request, pk = 0):
+def product_specific(request, pk = 1):
     try:
-        objs = Products.objects.all()
+        obj = Products.objects.get(id = pk)
         #return HttpResponse(f'<center><h1>Product with id {id} is {objs[id-1]}</h1><hr></center>')
 
         context = {
             'Identification No. : ': pk,
-            'name': objs[pk].name, 
-            'content': objs[pk].content, 
-            'price': objs[pk].price,
+            'name': obj.name, 
+            'content': obj.content, 
+            'price': obj.price,
         }
 
         return render(request, 'product_templates/product_detail.html', context = context)

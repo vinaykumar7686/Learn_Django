@@ -14,16 +14,17 @@
     <div style="text-align: left;">
         <h3>List of Products is as follows:</h3>
         <ul>
-            <!---For External File
-            {% include 'product_templates/list_of_products.html' with objects=objects %}
-            -->
-
             {% block list_of_products %}
                 {% for object in objects %}
                 <li>
                     <h3>{{object.name}}</h3>
-                    <h5>{{object.content}}</h5>
+                    {% if object.content %}
+                        <h5>{{object.content}}</h5>
+                    {% else %}
+                        <h5>Info currently unavailable</h5>
+                    {% endif %}
                     <h5>{{object.price}}</h5>
+                    <a href=http://127.0.0.1:8000/products/{{object.id}}>View</a>
                 </li>
                 {% endfor %}
             {% endblock list_of_products %}
