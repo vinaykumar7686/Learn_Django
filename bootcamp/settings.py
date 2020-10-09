@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'profiles',
     'products',
     'feedback',
+    'homepage',
 ]
 
 MIDDLEWARE = [
