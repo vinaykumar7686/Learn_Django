@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+Create Product
+{% endblock title %}
+
+{% block content %}
+<h1>Add a new Product</h1>
+<hr>
+{% endblock content %}
+
+{% block content2 %}
+
+<form action="." method="post">{% csrf_token %}
+    name: <input type="text" name="name">
+    content: <input type="text" name="content">
+    price: <input type="text" name="price">
+    <input type="submit" value="Add">
+</form>
+
+{% endblock content2 %}
