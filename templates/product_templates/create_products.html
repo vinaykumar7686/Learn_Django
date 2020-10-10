@@ -12,9 +12,7 @@ Create Product
 {% block content2 %}
 
 <form action="." method="post">{% csrf_token %}
-    name: <input type="text" name="name">
-    content: <input type="text" name="content">
-    price: <input type="text" name="price">
+    {{ form.as_p }}
     <input type="submit" value="Add">
 </form>
 
