@@ -36,6 +36,8 @@ def create_products(request):
         myform = create_product_form(request.POST)
         print(myform.is_valid())
         if myform.is_valid():
+            # print(myform.cleaned_data)
+            cdata = myform.cleaned_data
             from products.models import Products
-            Products.objects.create(name = info['name'], content = info['content'], price = info['price'])
+            Products.objects.create(name = cdata.get('name'), content = cdata.get('content'), price = cdata.get('price'))
     return render(request, 'product_templates/create_products.html' , {})
