@@ -4,7 +4,12 @@
 <a href="http://127.0.0.1:8000/products/">View Products</a>
 <a href="http://127.0.0.1:8000/products/create/">Add Product</a>
 <a href="http://127.0.0.1:8000/profiles/">View Profiles</a>
-<a href="http://127.0.0.1:8000/login/">Login</a>
+{% if user == True %}
+    <a href="http://127.0.0.1:8000/logout/">Logout</a>    
+{% else %}
+    <a href="http://127.0.0.1:8000/login/">Login</a>
+{% endif %}
+
 {% endblock content %}
 
 {% block content2 %}

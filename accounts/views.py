@@ -16,13 +16,13 @@ def login_view(request):
 
         username = form.cleaned_data.get('username')
         password = form.cleaned_data.get('password')
-        
+
         user = authenticate(request, username = username, password = password)
 
         if user:
             # provide access
             login(request, user = user)
-            return redirect("/products/")
+            return redirect("/")
         else:
             # redirect somewhere else
             #request.session['Invalid_User'] = 1 
@@ -30,3 +30,10 @@ def login_view(request):
 
     form = LoginForm()
     return render(request, "login/login.html", {"form":form})
+
+
+def logout_view(request):
+    print('Current User: ',request.user)
+    if request.user:
+        logout(request)
+    return redirect("/login/")
