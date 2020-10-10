@@ -18,6 +18,7 @@ from django.urls import path
 from products.views import product_home, product_specific, create_products
 from profiles.views import profiles_home
 from homepage.views import homepage
+from accounts.views import login_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,4 +27,5 @@ urlpatterns = [
     path('products/create/', create_products),
     path('products/<int:pk>/',product_specific),
     path('profiles/', profiles_home),
+    path('login/',login_view)
 ]
