@@ -7,8 +7,6 @@ restricted_unames = ['abc']
 
 class RegisterForm(forms.Form):
 
-    
-
     username = forms.CharField()
     email = forms.EmailField()
     password1 = forms.CharField(
@@ -19,6 +17,15 @@ class RegisterForm(forms.Form):
         label = 'Confirm Password',
         widget = forms.PasswordInput
     )
+
+    def clean(self):
+        password1 = self.cleaned_data.get('password1')
+        password2 = self.cleaned_data.get('password2')
+        if password1 == password2:
+            return self.cleaned_data
+        else:
+            raise forms.ValidationError("Passwords don't match.")
+
 
     def clean_username(self):
         username = self.cleaned_data.get('username')
