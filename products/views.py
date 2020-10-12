@@ -46,16 +46,21 @@ def create_products(request):
     '''
 
 def create_products(request):
+    if not request.user.is_staff:
+        return HttpResponse("Action Not Allowed")
+
+    # request.user
     from .forms import create_product_form
     myform = create_product_form(request.POST or None)
 
     if myform.is_valid():
         
-        myform.save(commit = False)
+        form = myform.save(commit = False)
 
         # Some Stuff
+        form.user = request.user
 
-        myform.save()
+        form.save()
         
         # redirect to success age or clear the form by "myform = create_product_form()"
         myform = create_product_form()

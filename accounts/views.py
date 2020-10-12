@@ -48,7 +48,6 @@ def login_view(request):
         username = form.cleaned_data.get('username')
         password = form.cleaned_data.get('password')
 
-        print(username, password)
         user = authenticate(request, username = username, password = password)
 
         if user:
